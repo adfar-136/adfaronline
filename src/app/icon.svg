@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14b8a6" />
+      <stop offset="50%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <!-- Background with rounded corners -->
+  <rect width="32" height="32" rx="9" fill="url(#grad)" />
+  <!-- Styled glowing 'A' letter path -->
+  <path d="M16 6.5 L22.5 23 L19.8 23 L18.2 19 L13.8 19 L12.2 23 L9.5 23 Z M16 11 L14.5 17 L17.5 17 Z" fill="#ffffff" filter="url(#glow)" />
+</svg>
