@@ -2,95 +2,109 @@
 
 import Link from "next/link";
 import { siteConfig } from "@/data/site";
-import { Mail, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Github, Linkedin, Instagram, Youtube } from "@/components/brand-icons";
-import { Button } from "@/components/ui/ui-components";
 
 export function Footer({ settings }: { settings?: any }) {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Github, href: settings?.github || siteConfig.github, label: "GitHub" },
-    { icon: Linkedin, href: settings?.linkedin || siteConfig.linkedin, label: "LinkedIn" },
-    { icon: Instagram, href: settings?.instagram || siteConfig.instagram, label: "Instagram" },
-    { icon: Youtube, href: settings?.youtubeCollegeWallah || siteConfig.youtubeCollegeWallah, label: "College Wallah (YT)" },
-    { icon: Youtube, href: settings?.youtubeLearnyard || siteConfig.youtubeLearnyard, label: "Learnyard (YT)" },
-    { icon: Youtube, href: settings?.youtubePersonal || siteConfig.youtubePersonal, label: "Adfar Rasheed (YT)" },
+    { icon: Github, href: settings?.github || siteConfig.github, label: "GitHub", hoverColor: "hover:text-[#24292e] dark:hover:text-[#ffffff]" },
+    { icon: Linkedin, href: settings?.linkedin || siteConfig.linkedin, label: "LinkedIn", hoverColor: "hover:text-[#0077b5]" },
+    { icon: Instagram, href: settings?.instagram || siteConfig.instagram, label: "Instagram", hoverColor: "hover:text-[#e1306c]" },
+    { icon: Youtube, href: settings?.youtubeCollegeWallah || siteConfig.youtubeCollegeWallah, label: "College Wallah (YT)", hoverColor: "hover:text-[#ff0000]" },
+    { icon: Youtube, href: settings?.youtubeLearnyard || siteConfig.youtubeLearnyard, label: "Learnyard (YT)", hoverColor: "hover:text-[#ff0000]" },
+    { icon: Youtube, href: settings?.youtubePersonal || siteConfig.youtubePersonal, label: "Adfar Rasheed (YT)", hoverColor: "hover:text-[#ff0000]" },
+  ];
+
+  const navItems = [
+    { label: "About", href: "/#about" },
+    { label: "Experience", href: "/#experience" },
+    { label: "Skills", href: "/#skills" },
+    { label: "Playlists", href: "/playlists" },
+    { label: "Lecture Notes", href: "/notes" },
+    { label: "Sunday Masterclass", href: "/masterclass" },
   ];
 
   return (
-    <footer className="relative border-t border-border bg-card mt-20 overflow-hidden">
-      {/* Top Gradient Border */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500" />
+    <footer className="relative border-t border-border/40 bg-card/25 backdrop-blur-md mt-28 overflow-hidden">
+      {/* Soft background glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[500px] h-24 bg-gradient-to-r from-teal-500/10 via-blue-500/10 to-purple-500/10 blur-3xl rounded-full pointer-events-none" />
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Identity */}
-          <div className="flex flex-col space-y-4">
-            <Link href="/" className="text-xl font-bold bg-gradient-to-r from-teal-400 to-blue-500 bg-clip-text text-fill-transparent">
-              {siteConfig.name}
-            </Link>
-            <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
-              Full-stack developer and program director dedicated to education, building codebases, and shaping next-gen engineering talent.
-            </p>
-          </div>
+      {/* Top subtle line */}
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-border/50 to-transparent" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="flex flex-col gap-8">
+          {/* Top Row: Identity & Socials */}
+          <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
+            {/* Brand identity */}
+            <div className="flex flex-col gap-2 max-w-sm">
+              <Link href="/" className="group inline-flex items-center gap-2">
+                <span className="text-xl font-bold bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 bg-clip-text text-fill-transparent group-hover:opacity-90 transition">
+                  {siteConfig.name}
+                </span>
+              </Link>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Full-stack developer and program director dedicated to education, building codebases, and shaping next-gen engineering talent.
+              </p>
+            </div>
 
-          {/* Quick Navigation */}
-          <div className="flex flex-col space-y-4">
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground">Navigation</h4>
-            <div className="grid grid-cols-2 gap-2 text-sm">
-              <Link href="/#about" className="text-muted-foreground hover:text-foreground transition flex items-center gap-0.5">
-                About <ArrowUpRight className="h-3 w-3 opacity-50" />
-              </Link>
-              <Link href="/#experience" className="text-muted-foreground hover:text-foreground transition flex items-center gap-0.5">
-                Experience <ArrowUpRight className="h-3 w-3 opacity-50" />
-              </Link>
-              <Link href="/#skills" className="text-muted-foreground hover:text-foreground transition flex items-center gap-0.5">
-                Skills <ArrowUpRight className="h-3 w-3 opacity-50" />
-              </Link>
-              <Link href="/playlists" className="text-muted-foreground hover:text-foreground transition flex items-center gap-0.5">
-                Playlists <ArrowUpRight className="h-3 w-3 opacity-50" />
-              </Link>
-              <Link href="/notes" className="text-muted-foreground hover:text-foreground transition flex items-center gap-0.5">
-                Lecture Notes <ArrowUpRight className="h-3 w-3 opacity-50" />
-              </Link>
-              <Link href="/masterclass" className="text-muted-foreground hover:text-foreground transition flex items-center gap-0.5 col-span-2">
-                Sunday Masterclasses <ArrowUpRight className="h-3 w-3 opacity-50" />
-              </Link>
+            {/* Social connections */}
+            <div className="flex flex-col gap-2">
+              <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground/80">Connect</span>
+              <div className="flex flex-wrap items-center gap-4">
+                {socialLinks.map((link, i) => {
+                  const Icon = link.icon;
+                  return (
+                    <a
+                      key={i}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`text-muted-foreground ${link.hoverColor} transition-all duration-300 hover:-translate-y-0.5 hover:scale-110`}
+                      aria-label={link.label}
+                    >
+                      <Icon className="h-5 w-5" />
+                    </a>
+                  );
+                })}
+              </div>
             </div>
           </div>
 
-          {/* Contact Details */}
-          <div className="flex flex-col space-y-4">
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground">Connect</h4>
-            <p className="text-sm text-muted-foreground">
-              Have questions or want to host a campus workshop? Drop an email.
-            </p>
-            <div className="flex items-center gap-3">
-              {socialLinks.map((link, i) => {
-                const Icon = link.icon;
-                return (
-                  <a
-                    key={i}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2.5 rounded-xl border border-border bg-background hover:bg-accent hover:text-primary transition-all duration-300 hover:-translate-y-1"
-                    aria-label={link.label}
-                  >
-                    <Icon className="h-4 w-4" />
-                  </a>
-                );
-              })}
-            </div>
-          </div>
-        </div>
+          {/* Subtle separator */}
+          <div className="h-px bg-border/40" />
 
-        {/* Footer bottom */}
-        <div className="mt-12 pt-8 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
-          <p>© {currentYear} {siteConfig.name}. All rights reserved.</p>
-          <div className="flex items-center gap-4">
-            <p>Designed with ❤️ for college developers</p>
+          {/* Bottom Row: Navigation, copyright & Back to top */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-xs text-muted-foreground">
+            {/* Copyright info */}
+            <div className="flex flex-col gap-1 items-center sm:items-start text-center sm:text-left">
+              <p>© {currentYear} {siteConfig.name}. All rights reserved.</p>
+              <p className="text-[10px] text-muted-foreground/60">Designed & built for the developer community</p>
+            </div>
+
+            {/* Horizontal Navigation Link List */}
+            <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="hover:text-foreground transition-colors"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+
+            {/* Back to Top */}
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="group flex items-center gap-1 hover:text-foreground transition-colors cursor-pointer"
+            >
+              <span>Back to top</span>
+              <ArrowUpRight className="h-3.5 w-3.5 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform duration-300" />
+            </button>
           </div>
         </div>
       </div>
