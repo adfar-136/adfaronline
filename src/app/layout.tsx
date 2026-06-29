@@ -76,6 +76,10 @@ export default async function RootLayout({
       suppressHydrationWarning
       className={`${spaceGrotesk.variable} ${geistSans.variable} h-full scroll-smooth`}
     >
+      <head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2318671833826169"
+          crossOrigin="anonymous"></script>
+      </head>
       <body className="min-h-full flex flex-col font-sans noise-bg antialiased bg-background text-foreground">
         <Providers>
           {showWhatsappBanner && <WhatsappBanner whatsappLink={whatsappLink} />}
